@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  pg_database:
+    image: postgres
+    container_name: postgres_container_weather_check
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      
+    ports:
+      - '6060:5432'
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root12345678
+      POSTGRES_DB: user-weather-db
+
+
+  # pgadmin:
+  #     image: dpage/pgadmin4
+  #     container_name: pgadmin_container
+  #     environment:
+  #       PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+  #       PGADMIN_DEFAULT_PASSWORD: admin
+  #     ports:
+  #       - '8080:80'
+      
+volumes:
+  postgres_data:
